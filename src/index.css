@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap');
+
+body {
+  margin: 0;
+}
+
+.Header{
+  height: 70px;
+  width:100vw;
+  background-color:black;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.webName{
+  font-family: 'Rubik', sans-serif;
+  margin: 0;
+  color: black;
+  background-color: #ffa600;
+  line-height: 40px;
+  padding: 0 7px;
+  border-radius: 10px;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.SearchBar {
+  width: 350px;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 40px;
+  display: grid;
+  grid-template-columns: 1fr 40px;
+}
+
+.SearchBar input{
+  width:100%;
+  background-color:white;
+  outline:none;
+  border:none;
+  height:100%;
+  font-size:20px;
+  padding:0 5px 0 10px;
+  color:rgb(69 69 69);
+}
+
+.uil-search{
+  color: #8d8d8d;
+  font-size: 30px;
+  line-height: 40px;
+  background-color: white;
+}
+
+.uil-search:hover{
+  color:#ffa600;
+  cursor: pointer;
+}
+
+
+@media (min-width:700px) {
+  .SearchBar{
+    width: 500px;
+  }
+}
+
+@media (max-width:450px){
+  .Header{
+    box-sizing: border-box;
+    padding: 7px 0;
+    flex-direction: column;
+    height: 120px;
+    justify-content: space-around;
+  }
+
+  .SearchBar{
+    width: 95vw;
+    height: 35px;
+    border-radius: 5px;
+    grid-template-columns: 1fr 30px;
+  }
+
+  .SearchBar input{
+    font-size: 18px;
+  }
+
+  .uil-search{
+    font-size: 25px;
+    line-height: 35px;
+  }
+
+}
