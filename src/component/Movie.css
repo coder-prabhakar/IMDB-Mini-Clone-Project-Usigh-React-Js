@@ -1,0 +1,51 @@
+.movListShow{
+    width: 350px;
+    border-radius: 5px;
+    color: white;
+    background-color: #111111;
+}
+  
+.movie{
+    height: 80px;
+    display: block;
+    padding:7px;
+    display: flex;
+    gap: 10px;
+    border-bottom: 1px solid rgb(163, 163, 163);
+}
+
+.movie:last-child{ border-bottom: none !important; }
+
+.movie:hover{
+    background-color: #0c0c0c;
+    cursor: pointer;
+}
+  
+.movie img { border-radius: 3px; }
+  
+.movie > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+  
+.movie > div > p:first-child{
+    color: #cfcfcf;
+}
+  
+.movie p { margin: 0; }
+  
+.movie .releasedYear {
+    color:#ffa600;
+}
+
+/* media quries */
+@media (min-width:700px) {
+    .movListShow { width: 500px; }
+}
+
+@media (max-width:450px){
+    .movListShow {
+        width: 95vw;
+    }
+}
