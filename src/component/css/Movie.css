@@ -7,6 +7,17 @@
     overflow-y: auto;
 }
 
+/*---------- scrollbar ---------*/
+.movListShow::-webkit-scrollbar{
+    width: 12px;
+}
+
+.movListShow::-webkit-scrollbar-thumb{
+    border-radius: 10px;
+    background-color: #cfcfcf;
+    border: 3px solid #111111;
+}
+
 .movie{
     height: 80px;
     display: block;
