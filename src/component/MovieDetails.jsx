@@ -1,8 +1,9 @@
 import React from 'react'
+import './css/MovieDetails.css'
 
 function MovieDetails({movieId}) {
   return (
-    <div>
+    <div className='MovieDetails'>
       <h1>Movie Details</h1>
       <h2>{movieId}</h2>
     </div>

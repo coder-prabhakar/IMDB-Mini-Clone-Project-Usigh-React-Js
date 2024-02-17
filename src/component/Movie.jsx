@@ -1,10 +1,10 @@
-import './Movie.css';
+import './css/Movie.css';
 import { Link } from "react-router-dom";
 
-function Movie({movieList , setMovieId}) {
+function Movie({movieList , setMovieId, movieStyle}) {
 
   return (
-    <Link className="movListShow" to="/movie-details">
+    <Link className="movListShow" to="/movie-details" style={movieStyle}>
       {
         movieList.map((value,index) => (
           <div className="movie" key={index} onClick={()=>setMovieId(value.imdbID)}>

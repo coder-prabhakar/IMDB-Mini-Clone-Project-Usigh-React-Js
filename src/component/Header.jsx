@@ -1,33 +1,25 @@
 import Movie from "./Movie";
 import {useState} from "react";
+import { Link } from "react-router-dom";
 
-function Header({setMovieId}) {
+function Header({setMovieId, setSrhBtnClick, movieStyle, setMovieStyle}) {
 
   const [srhKeywordMovie,setSrhKeywordMovie] = useState([]);
 
   function searchedKeyword(e){
-    let keyword = e.target.value;
-    if(keyword.length > 2){
-      fetch(`https://www.omdbapi.com/?s=${keyword}&apikey=612090f1`)
-      .then((data)=>{
-        return data.json()
-      })
-      .then((result)=>{
-        if(result.Response === "True"){
-          if(result.Search.length <= 5){
-            setSrhKeywordMovie(result.Search);
-          } else {
-            let storeTenMovie = [];
-            for(let i = 0; i<5; i++){
-              storeTenMovie.push(result.Search[i])
-            }
-            setSrhKeywordMovie(storeTenMovie);
-          }
-        }
-      });
-    } else {
-      setSrhKeywordMovie([]);
-    }
+    setMovieStyle({});
+
+    fetch(`https://www.omdbapi.com/?s=${e.target.value}&apikey=612090f1`)
+    .then((data)=>{
+      return data.json()
+    })
+    .then((result)=>{
+      if(result.Response === "True"){
+          setSrhKeywordMovie(result.Search);
+      } else {
+        setSrhKeywordMovie([]);
+      }
+    });
   }
 
   return (
@@ -39,9 +31,13 @@ function Header({setMovieId}) {
         {/* SearchBar */}
         <div className='SearchBar'>
             <input type="text" onChange={searchedKeyword}/>
-            <i className="uil uil-search"></i>
+            <Link className="uil uil-search" onClick={()=>{
+              setSrhBtnClick(srhKeywordMovie);
+              setMovieStyle({display:"none"});
+            }} 
+            to="/"></Link>
         </div>
-        <Movie movieList={srhKeywordMovie} setMovieId={setMovieId}/>
+        <Movie movieList={srhKeywordMovie} setMovieId={setMovieId} movieStyle={movieStyle}/>
       </div>
     </div>
   )
