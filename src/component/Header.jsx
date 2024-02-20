@@ -37,7 +37,7 @@ function Header({setMovieId, setSrhBtnClick, movieStyle, setMovieStyle}) {
             }} 
             to="/"></Link>
         </div>
-        <Movie movieList={srhKeywordMovie} setMovieId={setMovieId} movieStyle={movieStyle}/>
+        <Movie movieList={srhKeywordMovie} setMovieId={setMovieId} movieStyle={movieStyle} setMovieStyle={setMovieStyle}/>
       </div>
     </div>
   )
