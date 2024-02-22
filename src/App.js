@@ -7,10 +7,30 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 function App() {
 
-  const [movieId, setMovieId] = useState("kuchh nahi");
+  const [homeMovieList, setHomeMovieList] = useState(null);
+  const [movieList, setMovieList] = useState(null); 
+  const [movieData, setMovieData] = useState(null);
 
-  const [srhBtnClick, setSrhBtnClick] = useState([]);
-  
+  function getInput(apiSrhType, address, homeMovieShow){
+    fetch(`https://www.omdbapi.com/?${apiSrhType}=${address}&apikey=612090f1`)
+    .then((data)=>{
+      return data.json()
+    })
+    .then((result)=>{ 
+      if(apiSrhType === "s"){
+        if(address.length > 2 && result.Response === "True"){
+          setMovieList(result.Search)
+        } else {
+          setMovieList(null)
+        }
+        (homeMovieShow)?setHomeMovieList(movieList):setHomeMovieList(homeMovieList);
+      } else {
+        setMovieData(null)
+        setMovieData(result)
+      }
+    });
+  }
+
   const [movieStyle, setMovieStyle] = useState({});
 
   const router = createBrowserRouter([
@@ -18,8 +38,8 @@ function App() {
       path: "/",
       element: (
         <>
-          <Header setMovieId={setMovieId} setSrhBtnClick={setSrhBtnClick} movieStyle={movieStyle} setMovieStyle={setMovieStyle}/>
-          <Home srhBtnClick={srhBtnClick} setMovieId={setMovieId} setMovieStyle={setMovieStyle}/>
+          <Header getInput={getInput} setMovieData={setMovieData} movieList={movieList} movieStyle={movieStyle} setMovieStyle={setMovieStyle}/>
+          <Home getInput={getInput} homeMovieList={homeMovieList} setMovieStyle={setMovieStyle}/>
         </>
       ),
     },
@@ -27,8 +47,8 @@ function App() {
       path: "movie-details",
       element: (
         <>
-          <Header setMovieId={setMovieId} setSrhBtnClick={setSrhBtnClick} movieStyle={movieStyle} setMovieStyle={setMovieStyle}/>
-          <MovieDetails movieId={movieId}/>
+          <Header getInput={getInput} setMovieData={setMovieData} movieList={movieList} movieStyle={movieStyle} setMovieStyle={setMovieStyle}/>
+          <MovieDetails movieData={movieData}/>
         </>
       )
     }

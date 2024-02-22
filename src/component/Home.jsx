@@ -2,26 +2,26 @@ import React from 'react';
 import './css/Home.css'
 import { Link } from "react-router-dom";
 
-function Home({setMovieId, srhBtnClick, setMovieStyle}) {   
+function Home({getInput, homeMovieList, setMovieStyle}) {   
 
   return (
-    <Link className='Home' to="/movie-details" onClick={()=>{
-      setMovieStyle({display:"none"});
-    }}>
+    (homeMovieList !== null)?
+    <div className='Home' onClick={()=>{ setMovieStyle({display:"none"}) }}>
         {
-          srhBtnClick.map((value,index)=>(
-            <div key={index} onClick={()=>setMovieId(value.imdbID)}>
+          homeMovieList.map((value,index)=>(
+            <Link key={index} className="box" to="/movie-details" onClick={()=> getInput("i", value.imdbID, false)}>
               <img src={value.Poster} alt={value.Title} />
               <div>
                 <span>{value.Title}</span>
                 <span>{value.Year}</span>
                 <span>{value.Type}</span>
               </div>
-            </div>
+            </Link>
           ))
         }
-    </Link>
+    </div>
+    : null
   )
 }
 
-export default Home
+export default Home;
