@@ -1,5 +1,161 @@
 .MovieDetails{
-    min-height: 100vh;
+    height: auto;
     padding-top: 90px;
     padding-bottom: 20px;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr 2fr;
+}
+
+.MovieDetails .movie-dtl > p{
+    margin: 15px 0;
+    line-height: 20px;
+    color: hsl(39, 100%, 72%);
+}
+
+.MovieDetails .movie-dtl > p > span{
+    color: #cececed7 !important;
+
+}
+
+.movie-dtl .mov-title{
+    color:white !important;
+    font-size: 30px;
+    line-height: 35px !important;
+    margin: 0 !important;
+}
+
+.movie-dtl .star {
+    height: 25px;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.movie-dtl .star span:first-child{
+    font-size: 25px;
+    line-height: 30px;
+    color: #ffa600;
+}
+
+.movie-dtl .star > span:last-child{
+    font-size: 20px;
+    color: #cecece;
+}
+
+.movie-dtl .genre{
+    display: flex;
+    gap: 10px;
+    margin: 10px 0 20px 0;
+}
+
+.movie-dtl .genre > span{
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    background-color: rgba(90, 90, 90, 0.733);
+}
+
+.storyline{ margin-top: 10px; }
+
+.storyline > p{ margin: 0; }
+
+.storyline > p:first-child{
+    font-size: 20px;
+    color: #ffffff;
+    line-height: 35px;
+}
+
+.storyline > p:last-child {
+    color: #bdbdbd;
+    line-height: 20px;
+}
+
+@media (min-width:901px) {
+    .MovieDetails{
+        width: 850px;
+        margin: 0 auto;
+    }
+}
+
+@media (min-width:751px) and (max-width:900px) {
+    .MovieDetails{
+        grid-template-columns: 270px 1fr;
+        padding: 90px 30px 20px 30px; 
+    }
+}
+
+@media (max-width:750px){
+    .MovieDetails .movie-dtl > p{
+        margin: 10px 0;
+        font-size: 15px;
+    }
+
+    .movie-dtl .star {
+        height: 20px;
+        gap: 3px;
+    }
+    .movie-dtl .star span:first-child{ font-size: 20px; }
+    .movie-dtl .star > span:last-child{ font-size: 15px; }
+
+    .movie-dtl .genre{ font-size: 15px; }
+    
+    .storyline{ margin-top: 10px; }
+    
+    .storyline > p{ margin: 0; }
+    
+    .storyline > p:first-child{
+        font-size: 17px;
+        line-height: 30px;
+    }
+    
+    .storyline > p:last-child {
+        font-size: 15px;
+        line-height: 18px;
+    }
+}
+
+@media (min-width:601px) and (max-width:750px) {
+    .MovieDetails{
+        grid-template-columns: 200px 1fr;
+        gap: 15px;
+        padding: 90px 15px 20px 15px; 
+    }
+
+    .movie-dtl .mov-title{
+        font-size: 25px !important;
+        line-height: 30px !important;
+    }
+}
+
+@media (max-width:450px){
+    .MovieDetails{
+        padding: 140px 0 20px 0; 
+    }
+}
+
+@media (min-width:321px) and (max-width:600px){
+    .MovieDetails{
+        grid-template-columns: 300px;
+        gap: 10px;
+        justify-content: center;
+    }
+    
+    .movie-dtl .mov-title{
+        font-size: 20px !important;
+        line-height: 25px !important;
+    }
+}
+
+@media (max-width:320px){
+    .MovieDetails{
+        padding: 130px 10px 20px 10px;
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .movie-dtl .mov-title{
+        font-size: 20px !important;
+        line-height: 25px !important;
+    }
 }

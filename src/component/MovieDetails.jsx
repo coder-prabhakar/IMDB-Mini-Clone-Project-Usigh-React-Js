@@ -4,16 +4,25 @@ import './css/MovieDetails.css'
 function MovieDetails({movieData}) {
   return (
     (movieData !== null)?
-    <div className='MovieDetails' style={{display:'flex',gap:"30px"}}>
-      <img src={movieData.Poster} alt="" width="500px"/>
-      <div style={{display:'flex', flexDirection:'column', justifyContent:'space-between'}}>
-        <h1>Movie Name: {movieData.Title}</h1>
-        <p>Actors: {movieData.Actors}</p>
-        <p>Type: {movieData.Type}</p>
-        <p>Released: {movieData.Released}</p>
-        <p>Country: {movieData.Country}</p>
-        <p>Language: {movieData.Language}</p>
-        <p>imdbRating: {movieData.imdbRating}</p>
+    <div className='MovieDetails'>
+      <div className='movie-img'>
+        <img src={movieData.Poster} alt={movieData.Poster} width="100%"/>
+      </div>
+      <div className='movie-dtl'>
+        <p className="mov-title">{movieData.Title}</p>
+        <div className='star'><span>&#9733;</span><span>{movieData.imdbRating}</span></div>
+        <div className='genre'>{movieData.Genre.split(",").map((value,index)=>(
+          <span key={index}>{value.trim()}</span>
+        ))}</div>
+        <p><span>Type:</span> &nbsp; {movieData.Type}</p>
+        <p><span>Actors:</span> &nbsp; {movieData.Actors}</p>
+        <p><span>Released:</span> &nbsp; {movieData.Released}</p>
+        <p><span>Language:</span> &nbsp; {movieData.Language}</p>
+        <p><span>Country:</span> &nbsp; {movieData.Country}</p>
+        <div className='storyline'>
+          <p>Storyline</p>
+          <p>{movieData.Plot}</p>
+        </div>
       </div>
     </div>
     :
@@ -23,4 +32,4 @@ function MovieDetails({movieData}) {
 
 
 
-export default MovieDetails
+export default MovieDetails;
