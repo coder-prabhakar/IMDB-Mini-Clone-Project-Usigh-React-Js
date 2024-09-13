@@ -2,17 +2,17 @@ import {useState} from "react";
 import Header from "./component/Header";
 import Home from "./component/Home";
 import MovieDetails from "./component/MovieDetails";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+// Router
+import {BrowserRouter, Routes, Route } from "react-router-dom";
 
 
 function App() {
 
   // Home Movie List
   const [homeMovieList, setHomeMovieList] = useState(null);
-
   // Searched keyword
   const [movieList, setMovieList] = useState(null); 
-
   // Data of a particular movie
   const [movieData, setMovieData] = useState(null);
 
@@ -37,29 +37,25 @@ function App() {
   }
 
   const [movieStyle, setMovieStyle] = useState({});
-
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: (
-        <>
-          <Header getInput={getInput} setMovieData={setMovieData} movieList={movieList} movieStyle={movieStyle} setMovieStyle={setMovieStyle}/>
-          <Home getInput={getInput} homeMovieList={homeMovieList} setMovieStyle={setMovieStyle}/>
-        </>
-      ),
-    },
-    {
-      path: "movie-details",
-      element: (
-        <>
-          <Header getInput={getInput} setMovieData={setMovieData} movieList={movieList} movieStyle={movieStyle} setMovieStyle={setMovieStyle}/>
-          <MovieDetails movieData={movieData} setMovieStyle={setMovieStyle}/>
-        </>
-      )
-    }
-  ]);
-
-  return <RouterProvider router={router} />;
+  
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={
+          <>
+            <Header getInput={getInput} setMovieData={setMovieData} movieList={movieList} movieStyle={movieStyle} setMovieStyle={setMovieStyle}/>
+            <Home getInput={getInput} homeMovieList={homeMovieList} setMovieStyle={setMovieStyle}/>
+          </>
+        }/>
+        <Route path="/movie-details" element={
+          <>
+            <Header getInput={getInput} setMovieData={setMovieData} movieList={movieList} movieStyle={movieStyle} setMovieStyle={setMovieStyle}/>
+            <MovieDetails movieData={movieData} setMovieStyle={setMovieStyle}/>
+          </>
+        }/>
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;
