@@ -53,7 +53,7 @@ function App() {
       element: (
         <>
           <Header getInput={getInput} setMovieData={setMovieData} movieList={movieList} movieStyle={movieStyle} setMovieStyle={setMovieStyle}/>
-          <MovieDetails movieData={movieData}/>
+          <MovieDetails movieData={movieData} setMovieStyle={setMovieStyle}/>
         </>
       )
     }
