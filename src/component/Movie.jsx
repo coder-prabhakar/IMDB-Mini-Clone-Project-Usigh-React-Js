@@ -1,8 +1,14 @@
 import './css/Movie.css';
 import { Link } from "react-router-dom";
 
+// Context API
+import { useContext } from "react";
+import { CommonContext } from '../ContextAPI/ContextAPI';
 
-function Movie({getInput, movieList, movieStyle, setMovieStyle}) {
+
+function Movie() {
+
+  const {getInput, movieList, movieStyle, setMovieStyle} = useContext(CommonContext);
 
   return (
         (movieList !== null)?
@@ -28,4 +34,4 @@ function Movie({getInput, movieList, movieStyle, setMovieStyle}) {
 }
 
 
-export default Movie
+export default Movie;

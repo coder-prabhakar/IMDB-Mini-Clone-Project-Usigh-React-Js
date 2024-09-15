@@ -1,7 +1,14 @@
 import Movie from "./Movie";
 import { Link } from "react-router-dom";
 
-function Header({getInput, setMovieData, movieList, movieStyle, setMovieStyle}) {
+// Context API
+import { useContext } from "react";
+import { CommonContext } from '../ContextAPI/ContextAPI';
+
+
+function Header() {
+
+  const {getInput, setMovieData, setMovieStyle} = useContext(CommonContext);
   
   var searchKeyword = "";
   function searchedKeyword(e){
@@ -10,7 +17,6 @@ function Header({getInput, setMovieData, movieList, movieStyle, setMovieStyle}) 
     getInput("s", searchKeyword, false)
   }
 
-  
   return (
     <div className='Header'>
       {/* Website Name */}
@@ -27,10 +33,10 @@ function Header({getInput, setMovieData, movieList, movieStyle, setMovieStyle}) 
             }} 
             to="/"></Link>
         </div>
-        <Movie getInput={getInput} movieList={movieList} movieStyle={movieStyle} setMovieStyle={setMovieStyle}/>
+        <Movie/>
       </div>
     </div>
   )
 }
 
-export default Header
+export default Header;

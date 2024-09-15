@@ -2,7 +2,14 @@ import React from 'react';
 import './css/Home.css'
 import { Link } from "react-router-dom";
 
-function Home({getInput, homeMovieList, setMovieStyle}) {   
+// Context API
+import { useContext } from "react";
+import { CommonContext } from '../ContextAPI/ContextAPI';
+
+
+function Home() {   
+
+  const {getInput, homeMovieList, setMovieStyle} = useContext(CommonContext);
 
   return (
     (homeMovieList !== null)?

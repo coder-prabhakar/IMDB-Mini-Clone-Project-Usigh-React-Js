@@ -1,7 +1,14 @@
 import React from 'react'
 import './css/MovieDetails.css'
 
-function MovieDetails({movieData, setMovieStyle}) {
+// Context API
+import { useContext } from "react";
+import { CommonContext } from '../ContextAPI/ContextAPI';
+
+
+function MovieDetails() {
+
+  const {movieData, setMovieStyle} = useContext(CommonContext);
 
   return (
     (movieData !== null)?
